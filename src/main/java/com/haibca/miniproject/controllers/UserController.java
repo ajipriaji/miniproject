@@ -50,6 +50,13 @@ public class UserController {
         return "edit_user_form";
     }
 
+    @PostMapping("/users/save")
+    public String saveUser(User user) {
+        userService.save(user);
+
+        return "redirect:/users";
+    }
+
     @GetMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id){
         userService.deleteUser(id);
