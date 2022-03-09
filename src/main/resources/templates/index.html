@@ -21,7 +21,7 @@
         </div>
         <h1>Dashboard</h1>
         <button class="btn"><a th:href="@{/products}">Product</a></button>
-        <button class="btn"><a th:href="@{/category}">Category</a></button>
+        <button class="btn"><a th:href="@{/categories}">Category</a></button>
         <button class="btn"><a th:href="@{/users}" sec:authorize="hasAnyAuthority('Admin')">User Management</a></button>
         
     </div>

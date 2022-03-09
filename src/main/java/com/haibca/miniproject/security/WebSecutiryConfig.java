@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-// @EnableWebSecurity
+@EnableWebSecurity
 public class WebSecutiryConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
@@ -41,6 +41,7 @@ public class WebSecutiryConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/").hasAnyAuthority("User", "Admin")
+                .antMatchers("/categories").hasAnyAuthority("User", "Admin")
 				.antMatchers("/users").hasAnyAuthority("Admin")
                 .antMatchers("/add_users").hasAnyAuthority("Admin")
                 .antMatchers("/users/edit/**").hasAnyAuthority("Admin")
