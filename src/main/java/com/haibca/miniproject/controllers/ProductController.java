@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-
 import com.haibca.miniproject.models.entity.Category;
 import com.haibca.miniproject.models.entity.Product;
 import com.haibca.miniproject.models.repo.CategoryRepository;
@@ -29,13 +27,13 @@ public class ProductController {
    @PersistenceContext
     private EntityManager entityManager;
 
-   @GetMapping("/products")
+   @GetMapping("/")
    public String viewProductList(Model model) {
        List<Product> listProduct = (List<Product>) productRepo.findAll();
 
        model.addAttribute("listProduct", listProduct);
 
-       return "products";
+       return "production/dashboard";
    }
 
    @GetMapping("/add_products")
