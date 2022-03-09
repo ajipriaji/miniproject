@@ -2,7 +2,9 @@ package com.haibca.miniproject.services;
 
 import java.util.List;
 
+import com.haibca.miniproject.models.entity.Category;
 import com.haibca.miniproject.models.entity.Product;
+import com.haibca.miniproject.models.repo.CategoryRepository;
 import com.haibca.miniproject.models.repo.ProductRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepo;
+
+    @Autowired
+    private CategoryRepository categoryRepo;
 
     public List<Product> listAll() {
         return (List<Product>) productRepo.findAll();
@@ -25,4 +30,12 @@ public class ProductService {
     public Product save(Product product){
         return productRepo.save(product);
     }
+
+    public void deleteProduct(Long id){
+        productRepo.deleteById(id);
+    }
+    
+    public List<Category> getCategory() {
+        return (List<Category>) categoryRepo.findAll();
+    }   
 }

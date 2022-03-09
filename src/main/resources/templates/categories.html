@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>Category</title>
+</head>
+<body>
+    <div class="container text-center">
+        <div>
+        </div>
+        <h1>Category Management</h1>
+
+        <div>
+            <a th:href="@{/add_categories}">Add Category</a>
+        </div>
+    
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Category ID</th>
+                    <th>Category Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="categories: ${listCategory}">
+                    <td th:text="${categories.id}">Category ID</td>
+                    <td th:text="${categories.name}">Category Name</td>
+                    <td>
+                        <a th:href="@{'/categories/edit/' + ${categories.id}}">Edit</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'categories/delete/' + ${categories.id}}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>Product</title>
+</head>
+<body>
+    <div class="container text-center">
+        <div>
+        </div>
+        <h1>Product Management</h1>
+
+        <div>
+            <a th:href="@{/add_products}">Add Product</a>
+        </div>
+    
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    <th>Product Price</th>
+                    <th>Stock</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="products : ${listProduct}">
+                    <td th:text="${products.id}">Product ID</td>
+                    <td th:text="${products.name}">Product Name</td>
+                    <td th:text="${products.description}">Product Description</td>
+                    <td th:text="${products.price}">Product Price</td>
+                    <td th:text="${products.stock}">Stock</td>
+                    <td th:text="${products.category.name}">Category</td>
+                    <td>
+                        <a th:href="@{'/products/edit/' + ${products.id}}">Edit</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'products/delete/' + ${products.id}}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
