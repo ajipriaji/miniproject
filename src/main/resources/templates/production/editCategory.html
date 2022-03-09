@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +17,7 @@
 
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/datatables.min.css" />
 
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="../../assets/css/style.css" />
     </head>
     <body>
         <div id="wrapper">
@@ -92,7 +92,7 @@
                                         <p data-city="">Bandung</p>
                                     </div>
                                     <div class="col-xl-5 col-lg-4 col-md-4">
-                                        <img src="assets/img/wheater/Cloudy Shiny Clouds.svg" alt="Wheather Icon" width="130px" id="icon" />
+                                        <img src="../../assets/img/wheater/Cloudy Shiny Clouds.svg" alt="Wheather Icon" width="130px" id="icon" />
                                     </div>
                                 </div>
                             </div>
@@ -106,54 +106,28 @@
                             <div class="card-header py-3">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h4 class="m-0 font-weight-bold text-primary">Product Category</h4>
+                                        <h4 class="m-0 font-weight-bold text-primary">List Product</h4>
                                     </div>
-                                    <div class="col-md-6 text-right">
-                                        <a class="btn btn-secondary btn-md" th:href="@{/add_categories}">
-                                            <i class="fa-solid fa-plus"></i>
-                                            Add New Category
-                                        </a>
-                                    </div>
-
+                                    <div class="col-md-6 text-right"></div>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="table">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr >
-                                                <!-- <th style="width: 5%">No</th> -->
-                                                <th>Category ID</th>
+                                <form th:action="@{/add_categories}" method="post" th:object="${category}">
+                                    <input type="hidden" th:field="*{id}" />
 
-                                                <th>Category Name</th>
-                                                <!-- <th>Description</th> -->
-                                                <th style="width: 20%">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr th:each="categories: ${listCategory}">
-                                                <!-- <td class="text-center">1</td> -->
-                                                <td th:text="${categories.id}">Category ID</td>
-
-                                                <td th:text="${categories.name}">Macbook pro 16</td>
-                                                <!-- <td>Laptop</td> -->
-                                                <td>
-                                                    <a class="btn btn-primary bg-lightblue color-palette btn-sm" th:href="@{'/categories/edit/' + ${categories.id}}">
-                                                        <i class="fas fa-pencil-alt"> </i>
-                                                        Edit
-                                                    </a>
-
-                                                    <a class="btn btn-danger btn-sm" th:href="@{'categories/delete/' + ${categories.id}}">
-                                                        <i class="fas fa-trash"> </i>
-                                                        Delete
-                                                    </a>
-                                                
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    <div class="mb-3">
+                                        <label for="cNameAdd" class="form-label">Category Name</label>
+                                        <input type="text" class="form-control" id="cNameAdd" th:field="*{name}" required />
+                                    </div>
+                                    <!-- <div class="mb-3">
+                                        <label for="addDescription" class="form-label">Product description</label>
+                                        <textarea id="addDescription" name="addDescription" class="form-control"></textarea>
+                                    </div> -->
+                                    <div class="text-right">
+                                        <a class="btn btn-dark btn-md" th:href="@{/categories}"> cancel </a>
+                                        <button type="submit" class="btn btn-success btn-md">Save Changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -183,15 +157,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         ></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/datatables.min.js"></script>
-
-        <script src="assets/js/dataTable.js"></script>
-
-        <script src="assets/js/home.js" type="module"></script>
-
+        <script src="../../assets/js/home.js" type="module"></script>
     </body>
 </html>

@@ -35,7 +35,7 @@ async function successFunction(position) {
         case "thunderstorm with light drizzle":
         case "thunderstorm with drizzle":
         case "thunderstorm with heavy drizzle":
-            document.getElementById("icon").src = "assets/img/wheater/Night Windy Angled Rain Drops With Lightning.svg";
+            document.getElementById("icon").src = "../../assets/img/wheater/Night Windy Angled Rain Drops With Lightning.svg";
             break;
 
         case "light intensity drizzle":
@@ -51,7 +51,7 @@ async function successFunction(position) {
         case "shower rain":
         case "heavy intensity shower rain":
         case "ragged shower rain":
-            document.getElementById("icon").src = "assets/img/wheater/Night Rain Drops.svg";
+            document.getElementById("icon").src = "../../assets/img/wheater/Night Rain Drops.svg";
             break;
 
         case "moderate rain":
@@ -59,7 +59,7 @@ async function successFunction(position) {
         case "very heavy rain":
         case "extreme rain":
         case "light rain":
-            document.getElementById("icon").src = "assets/img/wheater/Day Rain Drops.svg";
+            document.getElementById("icon").src = "../../assets/img/wheater/Day Rain Drops.svg";
             break;
 
         case "freezing rain":
@@ -74,7 +74,7 @@ async function successFunction(position) {
         case "Light shower snow":
         case "Shower snow":
         case "Heavy shower snow":
-            document.getElementById("icon").src = "assets/img/wheater/Snow.svg";
+            document.getElementById("icon").src = "../../assets/img/wheater/Snow.svg";
             break;
 
         case "mist":
@@ -87,15 +87,15 @@ async function successFunction(position) {
         case "volcanic ash":
         case "squalls":
         case "tornado":
-            document.getElementById("icon").src = "assets/img/wheater/Wind.svg";
+            document.getElementById("icon").src = "../../assets/img/wheater/Wind.svg";
             break;
 
         case "clear sky":
-            document.getElementById("icon").src = "assets/img/wheater/Cloudy Sunny Clouds.svg";
+            document.getElementById("icon").src = "../../assets/img/wheater/Cloudy Sunny Clouds.svg";
             break;
 
         default:
-            document.getElementById("icon").src = "assets/img/wheater/Cloudy Shiny Clouds.svg";
+            document.getElementById("icon").src = "../../assets/img/wheater/Cloudy Shiny Clouds.svg";
             break;
     }
 
