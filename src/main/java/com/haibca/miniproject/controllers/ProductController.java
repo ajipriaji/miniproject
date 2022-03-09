@@ -2,6 +2,10 @@ package com.haibca.miniproject.controllers;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import com.haibca.miniproject.models.entity.Category;
 import com.haibca.miniproject.models.entity.Product;
 import com.haibca.miniproject.models.repo.CategoryRepository;
@@ -22,6 +26,9 @@ public class ProductController {
    @Autowired
    private ProductRepository productRepo;
 
+   @PersistenceContext
+    private EntityManager entityManager;
+
    @GetMapping("/products")
    public String viewProductList(Model model) {
        List<Product> listProduct = (List<Product>) productRepo.findAll();
@@ -41,6 +48,20 @@ public class ProductController {
        return "add_product_form";
    }
 
+//    @Transactional
+//    @PostMapping("/add_products")
+//     public String customSaveProduct(Product product, Category category) {
+//         entityManager.createNativeQuery("INSERT INTO products (name, description, price, stock, category_id) VALUES (?,?,?,?,?)")
+//         .setParameter(1, product.getName())
+//         .setParameter(2, product.getDescription())
+//         .setParameter(3, product.getPrice())
+//         .setParameter(4, product.getStock())
+//         .setParameter(5, product.getCategory())
+//         .executeUpdate();
+
+//         return "redirect:/products";
+//     }
+
    @PostMapping("/add_products")
    public String addNewProduct(Product product) {
        productRepo.save(product);
@@ -58,5 +79,12 @@ public class ProductController {
 
        return "edit_product_form";
    }
+
+   @GetMapping("/products/delete/{id}")
+    public String deleteProduct(@PathVariable("id") Long id){
+        productRepo.deleteById(id);
+
+        return "redirect:/products";
+    }
     
 }
