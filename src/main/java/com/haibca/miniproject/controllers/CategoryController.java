@@ -15,9 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class CategoryController {
 
+
+    // Memanggil file Service Category yang digunakan untuk 
     @Autowired
     private CategoryService categoryService;
 
+
+    // Menampilkan halaman category
     @GetMapping("/categories")
     public String viewCategoryList(Model model) {
         List<Category> listCategory = categoryService.listAll();
@@ -25,6 +29,7 @@ public class CategoryController {
         return "production/category";
     }
 
+    // Menampilkan halaman tambah category
     @GetMapping("/add_categories")
     public String showFormCategory(Model model) {
         model.addAttribute("category", new Category());
@@ -32,6 +37,7 @@ public class CategoryController {
         return "production/addCategory";
     }
 
+    // Eksekusi POST Method dari halaman tambah category
     @PostMapping("/add_categories")
     public String addNewCategory(Category category) {
         categoryService.save(category);
@@ -39,6 +45,7 @@ public class CategoryController {
         return "redirect:/categories";
     }
 
+    // Menampilkan halaman edit category
     @GetMapping("/categories/edit/{id}")
     public String editCategory(@PathVariable("id") Long id, Model model) {
         Category category = categoryService.getId(id);
@@ -48,6 +55,7 @@ public class CategoryController {
         return "production/editCategory";
     }
 
+    // Eksekusi POST Method dari halaman edit category
     @PostMapping("/categories/save")
     public String saveCategory(Category category) {
         categoryService.save(category);
@@ -55,6 +63,7 @@ public class CategoryController {
         return "redirect:/categories";
     }
 
+    //Menerima intruksi hapus dari halaman category
     @GetMapping("/categories/delete/{id}")
     public String deleteCategory(@PathVariable("id") Long id) {
         categoryService.deleteCategory(id);
