@@ -37,5 +37,11 @@ public class ProductService {
     
     public List<Category> getCategory() {
         return (List<Category>) categoryRepo.findAll();
-    }   
+    }
+    
+    public void saveProductWithDefaultStok(Product product){
+
+        // product.setStock(0);
+        productRepo.save(product);
+    }
 }

@@ -2,13 +2,16 @@ package com.haibca.miniproject.models.entity;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,12 +30,12 @@ public class Product {
     @Column 
     private String description;
 
-    @Column
-    private Integer stock;
-
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product")
+    private Stock stock;
 
     public Product () {
 
@@ -54,20 +57,15 @@ public class Product {
         this.description = description;
     }
 
-    public Product(Integer stock) {
-        this.stock = stock;
-    }
-
     public Product(Category category) {
         this.category = category;
     }
 
-    public Product(Long id, String name, BigDecimal price, String description, Integer stock, Category category) {
+    public Product(Long id, String name, BigDecimal price, String description, Category category) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.stock = stock;
         this.category = category;
     }
 
@@ -103,14 +101,6 @@ public class Product {
         this.description = description;
     }
 
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -118,6 +108,5 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
-
     
 }

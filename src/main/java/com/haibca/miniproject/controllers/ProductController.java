@@ -8,6 +8,8 @@ import com.haibca.miniproject.models.entity.Category;
 import com.haibca.miniproject.models.entity.Product;
 import com.haibca.miniproject.models.repo.CategoryRepository;
 import com.haibca.miniproject.models.repo.ProductRepository;
+import com.haibca.miniproject.services.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,9 @@ public class ProductController {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/")
     public String viewProductList(Model model) {
@@ -46,24 +51,9 @@ public class ProductController {
         return "production/addList";
     }
 
-    // @Transactional
-    // @PostMapping("/add_products")
-    // public String customSaveProduct(Product product, Category category) {
-    // entityManager.createNativeQuery("INSERT INTO products (name, description,
-    // price, stock, category_id) VALUES (?,?,?,?,?)")
-    // .setParameter(1, product.getName())
-    // .setParameter(2, product.getDescription())
-    // .setParameter(3, product.getPrice())
-    // .setParameter(4, product.getStock())
-    // .setParameter(5, product.getCategory())
-    // .executeUpdate();
-
-    // return "redirect:/products";
-    // }
-
     @PostMapping("/add_products")
     public String addNewProduct(Product product) {
-        productRepo.save(product);
+       productService.saveProductWithDefaultStok(product);
 
         return "redirect:/";
     }
