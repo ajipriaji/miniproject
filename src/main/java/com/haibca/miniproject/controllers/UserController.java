@@ -63,4 +63,13 @@ public class UserController {
 
         return "redirect:/users";
     }
+
+    @GetMapping("/edit_profile/{email}")
+    public String showEditProfile(String email, Model model){
+        User user = userService.getEmail(email);
+
+        model.addAttribute("user", user);
+        return "production/editProfile";
+
+    }
 }
