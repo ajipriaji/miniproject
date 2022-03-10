@@ -112,7 +112,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form th:action="@{/add_users}" method="post" th:object="${user}">
+                                <form th:action="@{/users/save}" method="post" th:object="${user}">
                                     <input type="hidden" th:field="*{id}" />
 
                                     <div class="mb-3">
@@ -128,9 +128,7 @@
                                         <input type="text" class="form-control" id="lNameAdd" th:field="*{lastName}" required />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="show_hide_password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" th:field="*{password}" required />
-                                        
+                                        <input type="hidden" class="form-control" th:field="*{password}"/>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Assigned Roles</label>

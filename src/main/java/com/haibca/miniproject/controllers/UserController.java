@@ -4,20 +4,27 @@ import java.util.List;
 
 import com.haibca.miniproject.models.entity.Role;
 import com.haibca.miniproject.models.entity.User;
+import com.haibca.miniproject.models.repo.UserRepository;
 import com.haibca.miniproject.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepo;
 
     @GetMapping("/users")
     public String viewUsersList(Model model) {
@@ -52,7 +59,14 @@ public class UserController {
 
     @PostMapping("/users/save")
     public String saveUser(User user) {
-        userService.save(user);
+        String inputPass =  user.getPassword();
+        User user2 = new User();
+        String oldPass = user2.getPassword();
+
+        if(inputPass == oldPass){
+           user.setPassword(oldPass);
+           userRepo.save(user); 
+        }
 
         return "redirect:/users";
     }

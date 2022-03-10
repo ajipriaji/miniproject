@@ -41,6 +41,25 @@ public class UserService {
         userRepo.save(user);
     }
 
+    public void editUser(User user){
+        String inputPass =  user.getPassword();
+        User user2 = new User();
+        String oldPass = user2.getPassword();
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode(user.getPassword());
+
+        if(inputPass == oldPass){
+           user.setPassword(oldPass);
+           userRepo.save(user); 
+        }
+        else {
+            
+            user.setPassword(encodedPassword);
+            userRepo.save(user);
+        }
+    }
+
     public void deleteUser(Long id){
         userRepo.deleteById(id);
     }
