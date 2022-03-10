@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.haibca.miniproject.models.entity.Role;
 import com.haibca.miniproject.models.entity.User;
-import com.haibca.miniproject.models.repo.UserRepository;
 import com.haibca.miniproject.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserRepository userRepo;
-
+    // Menampilkan halaman user
     @GetMapping("/users")
     public String viewUsersList(Model model) {
         List<User> listUsers = userService.listAll();
@@ -31,18 +28,21 @@ public class UserController {
         return "production/users";
     }
 
+    // Menampilkan halaman tambah user
     @GetMapping("/add_users")
     public String showFormAddUser(Model model) {
         model.addAttribute("user", new User());
         return "production/addUsers";
     }
 
+    //Eksekusi method post yang diterima dari halaman tambah user
     @PostMapping("/add_users")
     public String addUser(User user) {
         userService.saveUserWithDefaultRole(user);
         return "redirect:/users";
     }
 
+    //Menampilkan halaman edit user
     @GetMapping("/users/edit/{id}")
     public String editUser(@PathVariable("id") Long id, Model model) {
         User user = userService.get(id);
@@ -54,35 +54,18 @@ public class UserController {
         return "production/editUsers";
     }
 
+    //Eksekusi method post yang diterima dari halaman edit user
     @PostMapping("/users/save")
     public String saveUser(User user) {
-        String inputPass =  user.getPassword();
-        User user2 = new User();
-        String oldPass = user2.getPassword();
-
-        if(inputPass == oldPass){
-           user.setPassword(oldPass);
-           userRepo.save(user); 
-        } else {
-            userRepo.save(user); 
-        }
-
+        userService.editUser(user);
         return "redirect:/users";
     }
 
+    // Eksekusi method delete
     @GetMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
 
         return "redirect:/users";
-    }
-
-    @GetMapping("/edit_profile/{email}")
-    public String showEditProfile(String email, Model model){
-        User user = userService.getEmail(email);
-
-        model.addAttribute("user", user);
-        return "production/editProfile";
-
     }
 }

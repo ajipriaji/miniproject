@@ -46,17 +46,11 @@ public class UserService {
         User user2 = new User();
         String oldPass = user2.getPassword();
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodedPassword = encoder.encode(user.getPassword());
-
         if(inputPass == oldPass){
            user.setPassword(oldPass);
            userRepo.save(user); 
-        }
-        else {
-            
-            user.setPassword(encodedPassword);
-            userRepo.save(user);
+        } else {
+            userRepo.save(user); 
         }
     }
 
@@ -74,10 +68,6 @@ public class UserService {
 
     public List<Role> getRoles() {
         return (List<Role>) roleRepo.findAll();
-    }
-
-    public User getEmail(String email) {
-        return userRepo.findByEmail(email);
     }
     
 }
