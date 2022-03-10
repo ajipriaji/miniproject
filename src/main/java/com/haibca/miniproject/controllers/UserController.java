@@ -8,14 +8,11 @@ import com.haibca.miniproject.models.repo.UserRepository;
 import com.haibca.miniproject.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class UserController {
@@ -66,6 +63,8 @@ public class UserController {
         if(inputPass == oldPass){
            user.setPassword(oldPass);
            userRepo.save(user); 
+        } else {
+            userRepo.save(user); 
         }
 
         return "redirect:/users";
