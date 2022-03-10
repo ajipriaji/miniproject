@@ -4,9 +4,17 @@
 
 ## **1. Tentang Aplikasi**
 
-Product Management System-34 (PMS-34) merupakan sebuah sistem manajemen produk yang dibangun untuk kemudahan dalam melakukan pendataan produk yang dimiliki suatu perusahaan. Dalam aplikasi ini terdapat 2 role, yaitu **Owner** dan **Admin**. Owner memiliki akses untuk manajemen **(menambah, menghapus, dan mengedit)** produk, category, dan admin. Kemudian admin hanya memiliki akses untuk manajemen produk dan kategori produk. Kami membuat konsep aplikasi ini seperti dalam market, seorang admin dan user dapat mengelolah produk-produk yang nantinya akan di distribusikan kepada user.
+Product Management System-34 (PMS-34) merupakan sebuah sistem manajemen produk yang dibangun untuk kemudahan dalam melakukan pendataan produk yang dimiliki suatu perusahaan. Dalam aplikasi ini terdapat 2 role, yaitu **Owner** dan **Admin**. Owner memiliki akses untuk manajemen **(menambah, menghapus, dan mengedit)** produk, category, dan admin. Kemudian admin hanya memiliki akses untuk manajemen produk dan kategori produk. Kami membuat konsep aplikasi ini seperti dalam market, seorang Owner dan Admin dapat mengelolah produk-produk yang nantinya akan di distribusikan kepada user.
 
-## **2. Tech Pengembangan Aplikasi**
+## **2. Cara Menjalankan Aplikasi**
+
+1. Import database haibca-mp
+2. lakukan konfigurasi di application.properties
+    - Sesuaikan port dan nama database `spring.datasource.url=jdbc:mysql://localhost:3306/haibca-mp`
+    - Sesuaikan Username database `spring.datasource.username=root`
+    - sesuaikan Password database `spring.datasource.password=`
+
+## **3. Tech Pengembangan Aplikasi**
 
 Dalam mengembangkan aplikasi ini kami menggunakan **Java** sebagai core bahasa pemrograman. Kami juga menggunakan beberapa framework untuk memudahkan dalam pengembangan aplikasi ini kedepannya.
 List teknologi yang digunakan:
@@ -18,7 +26,7 @@ List teknologi yang digunakan:
 5. Bootstrap 5.0.2
 6. Jquery 3.6.0
 
-## **3. Fitur Tersedia**
+## **4. Fitur Tersedia**
 
 Aplikasi ini telah menerapkan seluruh Basic Feature yang diminta seperti:
 
@@ -28,7 +36,7 @@ Aplikasi ini telah menerapkan seluruh Basic Feature yang diminta seperti:
 
 Sebagai tambahan fitur kami telah menambahkan **Role pada pengguna (Owner dan Admin)**.
 
-## **4. Team Member**
+## **5. Team Member**
 
 Mari berkenalan dengan kami:
 
