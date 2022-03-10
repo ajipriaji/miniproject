@@ -26,7 +26,7 @@ public class UserService {
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
-        Role roleUser = roleRepo.findByName("User");
+        Role roleUser = roleRepo.findByName("Admin");
         user.addRole(roleUser);
 
         userRepo.save(user);
@@ -55,6 +55,10 @@ public class UserService {
 
     public List<Role> getRoles() {
         return (List<Role>) roleRepo.findAll();
+    }
+
+    public User getEmail(String email) {
+        return userRepo.findByEmail(email);
     }
     
 }
