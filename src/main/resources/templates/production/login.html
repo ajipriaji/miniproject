@@ -41,13 +41,9 @@
                 padding: 0 2rem;
             }
 
-            .wave {
-                position: fixed;
-                background-repeat: no-repeat;
-                background-size: cover;
-                bottom: 0;
-                left: 0;
-                z-index: -1;
+            .text-white {
+                font-family: inherit;
+                color: #f8fafe;
             }
 
             .login-content {
@@ -179,16 +175,6 @@
                 text-decoration: none;
             }
 
-            .forgot {
-                color: #999;
-                font-size: 0.9rem;
-                transition: 0.3s;
-            }
-
-            .forgot:hover {
-                color: #f8fafe;
-            }
-
             .sub-container {
                 display: flex;
                 flex-wrap: wrap;
@@ -251,32 +237,29 @@
                 .login-content {
                     justify-content: center;
                 }
-
-                .wave {
-                    display: none;
-                }
             }
 
             input:-webkit-autofill {
                 font-family: inherit;
-                -webkit-box-shadow: 0 0 0 50px #313860 inset; /* Change the color to your own background color */
+                -webkit-box-shadow: 0 0 0 50px #313860 inset;
+                box-shadow: 0 0 0 50px #313860 inset;
+
                 -webkit-text-fill-color: #f8fafe;
             }
             input:-webkit-autofill:focus {
                 font-family: inherit;
+                box-shadow: #313860, 0 0 0 50px white inset;
                 -webkit-box-shadow: #313860, 0 0 0 50px white inset;
                 -webkit-text-fill-color: #f8fafe;
             }
         </style>
-
-        <!-- <link rel="stylesheet" href="../../assets/css/login.css" /> -->
     </head>
     <body>
         <div class="container">
             <div class="login-content">
                 <form th:action="@{/login}" method="post">
-                    <!-- <div th:if="${param.error}" class="alert alert-error">Invalid username and password</div>
-                    <div th:if="${param.logout}" class="alert alert-error">You have been logged out</div> -->
+                    <div th:if="${param.error}" class="text-white">Invalid username and password</div>
+                    <div th:if="${param.logout}" class="text-white">You have been logged out</div>
                     <div class="greetings">
                         <h2 class="title">Welcome!</h2>
                         <p class="sub-title">Please login using your email and password</p>
@@ -299,19 +282,11 @@
                             <input type="password" class="input" name="password" id="password" />
                         </div>
                     </div>
-                    <div class="sub-container">
-                        <div class="container-box">
-                            <button type="submit" class="btn">Login</button>
-                        </div>
-                        <div class="container-box-2">
-                            <a href="#" class="forgot">Forgot Password?</a>
-                        </div>
-                    </div>
+                    <button type="submit" class="btn">Login</button>
                 </form>
             </div>
         </div>
 
-        <!-- <script src="../../assets/js/login.js"></script> -->
         <script>
             const inputs = document.querySelectorAll(".input");
 
