@@ -24,13 +24,13 @@ public class UserController {
         List<User> listUsers = userService.listAll();
         model.addAttribute("listUsers", listUsers);
 
-        return "users";
+        return "production/users";
     }
 
     @GetMapping("/add_users")
-    public String showFormAddUser(Model model){
+    public String showFormAddUser(Model model) {
         model.addAttribute("user", new User());
-        return "add_user_form";
+        return "production/addUsers";
     }
 
     @PostMapping("/add_users")
@@ -47,7 +47,7 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("listRoles", listRoles);
 
-        return "edit_user_form";
+        return "production/editUsers";
     }
 
     @PostMapping("/users/save")
@@ -58,7 +58,7 @@ public class UserController {
     }
 
     @GetMapping("/users/delete/{id}")
-    public String deleteUser(@PathVariable("id") Long id){
+    public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
 
         return "redirect:/users";
