@@ -116,7 +116,7 @@
                                             <tr >
                                                 <th>Category ID</th>
                                                 <th>Category Name</th>
-                                                <!-- <th>Category Description</th> -->
+                                                <th>Category Description</th>
                                                 <th style="width: 20%">Actions</th>
                                             </tr>
                                         </thead>
@@ -124,7 +124,7 @@
                                             <tr th:each="categories: ${listCategory}">
                                                 <td th:text="${categories.id}">Category ID</td>
                                                 <td th:text="${categories.name}">Macbook pro 16</td>
-                                                <!-- <td th:text="${categories.name}">Macbook pro 16</td> -->
+                                                <td th:text="${categories.description}">Macbook pro 16</td>
                                                 <td>
                                                     <a class="btn btn-primary bg-lightblue color-palette btn-sm" th:href="@{'/categories/edit/' + ${categories.id}}">
                                                         <i class="fas fa-pencil-alt"> </i>
