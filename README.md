@@ -4,7 +4,7 @@
 
 ## **1. Tentang Aplikasi**
 
-Product Management System-34 (PMS-34) merupakan sebuah sistem manajemen produk yang dibangun untuk kemudahan dalam melakukan pendataan produk yang dimiliki suatu perusahaan. Dalam aplikasi ini terdapat 2 role, yaitu **Owner** dan **Admin**. Owner memiliki akses untuk manajemen **(menambah, menghapus, dan mengedit)** produk, category, dan admin. Kemudian admin hanya memiliki akses untuk manajemen produk dan mengubah profile dirinya. Kami membuat konsep aplikasi ini seperti dalam market, seorang admin dan user dapat mengelolah produk-produk yang nantinya akan di distribusikan kepada user.
+Product Management System-34 (PMS-34) merupakan sebuah sistem manajemen produk yang dibangun untuk kemudahan dalam melakukan pendataan produk yang dimiliki suatu perusahaan. Dalam aplikasi ini terdapat 2 role, yaitu **Owner** dan **Admin**. Owner memiliki akses untuk manajemen **(menambah, menghapus, dan mengedit)** produk, category, dan admin. Kemudian admin hanya memiliki akses untuk manajemen produk dan kategori produk. Kami membuat konsep aplikasi ini seperti dalam market, seorang admin dan user dapat mengelolah produk-produk yang nantinya akan di distribusikan kepada user.
 
 ## **2. Tech Pengembangan Aplikasi**
 
@@ -15,8 +15,8 @@ List teknologi yang digunakan:
 2. Spring Boot
 3. HTML, Css, Javascript
 4. MySql
-5. Bootstrap
-6. Jquery
+5. Bootstrap 5.0.2
+6. Jquery 3.6.0
 
 ## **3. Fitur Tersedia**
 
@@ -26,7 +26,7 @@ Aplikasi ini telah menerapkan seluruh Basic Feature yang diminta seperti:
 2. Nama user yang login, dan cuaca hari ini berdasarkan tempat pengguna login
 3. CRUD Product, Category, dan Users
 
-Sebagai tambahan fitur kami telah menambahkan **Role pada pengguna (Owner dan Admin)**, dan Edit Profile Pengguna.
+Sebagai tambahan fitur kami telah menambahkan **Role pada pengguna (Owner dan Admin)**.
 
 ## **4. Team Member**
 
